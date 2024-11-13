@@ -68,16 +68,15 @@
 // export default Posts;
 
 
-import './Post.css';
 import { useState, useEffect, useContext } from 'react';
 import { HeartIcon } from 'lucide-react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 import noImage from '../../assets/no-image.jpg';
-import postimg from '../../../public/R15V3.jpg'
-import { Link } from 'react-router-dom';
-import  PostContext  from '../../Store/PostContext';
-
+import postimg from '../../../public/R15V3.jpg';
+import { Link, useNavigate } from 'react-router-dom';
+import { PostContext } from '../../Store/PostContext';
+import './Post.css';
 
 type productType = {
   title?: string;
@@ -90,23 +89,23 @@ type productType = {
   image?: string;
 };
 
-
 const Posts = () => {
-  // State to hold the products
   const [products, setProducts] = useState<productType[]>([]);
-  const { setPostDetails }: { setPostDetails: React.Dispatch<React.SetStateAction<productType>> } = useContext(PostContext);
+  
+  // Access context and ensure it exists
+  const context = useContext(PostContext);
+  if (!context) {
+    throw new Error("PostContext must be used within a PostProvider");
+  }
+  
+  const { setPostDetails } = context;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        // Reference to the "pro" collection in Firestore
         const productCollectionRef = collection(db, "pro");
-        
-        // Fetching the documents in the "pro" collection
         const productSnapshot = await getDocs(productCollectionRef);
-        
-        // Extracting data from each document and setting it to state
-        // const productList:productType[] = productSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         const productList: productType[] = productSnapshot.docs.map(doc => ({
           id: doc.id,
           title: doc.data().title || 'Untitled',
@@ -118,16 +117,19 @@ const Posts = () => {
           image: doc.data().image || ''
         }));
         
-        
-        console.log(productList)
         setProducts(productList);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
     };
-    
+
     fetchProducts();
   }, []);
+
+  const handleCardClick = (product: productType) => {
+    setPostDetails(product);  // Set the clicked product details in context
+    navigate('/view');        // Navigate to the '/view' page
+  }
 
   return (
     <div className="postParentDiv">
@@ -138,15 +140,14 @@ const Posts = () => {
         </div>
         <div className="cards">
           {products.map(product => (
-            <div key={product.id} className="card" onClick={()=>{setPostDetails(product)}}>
+            <div key={product.id} className="card" onClick={() => handleCardClick(product)}>
               <div className="favorite">
                 <HeartIcon />
               </div>
               <Link to='/view'>
-              <div className="image">
-                <img src={product.image || noImage} alt={product.title} />
-                
-              </div>
+                <div className="image">
+                  <img src={product.image || noImage} alt={product.title} />
+                </div>
               </Link>
               <div className="content">
                 <p className="rate">&#x20B9; {product.price}</p>
@@ -167,10 +168,10 @@ const Posts = () => {
         <div className="cards">
           <div className="card">
             <div className="favorite">
-              <HeartIcon/>
+              <HeartIcon />
             </div>
             <div className="image">
-              <img src={postimg} alt="" />
+              <img src={postimg} alt="YAMAHA R15V3" />
             </div>
             <div className="content">
               <p className="rate">&#x20B9; 250000</p>
@@ -188,4 +189,3 @@ const Posts = () => {
 };
 
 export default Posts;
-

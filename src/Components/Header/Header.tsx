@@ -27,7 +27,9 @@ function Header() {
     <div className="headerParentDiv">
       <div className="headerChildDiv">
         <div className="brandName">
+          <Link to='/'>
           <img src={OlxLogo} alt="OLX Logo" className="brandName" />
+          </Link>
         </div>
         <div className="placeSearch">
           <SearchIcon aria-label="Search location" />

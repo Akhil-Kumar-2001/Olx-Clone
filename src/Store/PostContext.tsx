@@ -1,15 +1,8 @@
-import { createContext,useState } from 'react'
+import { createContext, useState, ReactNode } from 'react';
 
 
-
-type ProductContextType = {
-    setPostDetails: React.Dispatch<React.SetStateAction<productType>>;
-};
-
-export const PostContext = createContext<ProductContextType | null>(null);
-
- type productType ={
-    title?: string;
+type productType = {
+  title?: string;
   price?: number;
   location: string;
   category?: string;
@@ -17,17 +10,30 @@ export const PostContext = createContext<ProductContextType | null>(null);
   description: string;
   id: string;
   image?: string;
- }
+};
 
- function Post({children}) {
-    const [postDetails,setPostDetails] = useState()
-    return (
-        <postContext.Provider value={{postDetails,setPostDetails}}>
-            {children}
-        </postContext.Provider>
-    )
- }
+type ProductContextType = {
+  postDetails: productType | undefined;
+  setPostDetails: React.Dispatch<React.SetStateAction<productType | undefined>>;
+};
 
+// Initialize the context with `undefined` as default
+const PostContext = createContext<ProductContextType | undefined>(undefined);
 
- export default Post
+type PostProviderProps = {
+  children: ReactNode;
+};
+
+const PostProvider = ({ children }: PostProviderProps) => {
+  const [postDetails, setPostDetails] = useState<productType | undefined>(undefined);
+
+  return (
+    <PostContext.Provider value={{ postDetails, setPostDetails }}>
+      {children}
+    </PostContext.Provider>
+  );
+};
+
+export { PostContext };
+export default PostProvider;
 

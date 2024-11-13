@@ -14,7 +14,7 @@ const Create = () => {
   const [formData, setFormData] = useState({
     title: "",
     price: 0,
-    description: "",
+    category: "",  // Changed description to category
     location: ""
   });
 
@@ -64,7 +64,7 @@ const Create = () => {
       const dataToInsert = {
         title: formData.title,
         price: formData.price,
-        description: formData.description,
+        category: formData.category,  // Updated to category
         location: formData.location,
         image: imageUrl,
         date: new Date()
@@ -99,8 +99,8 @@ const Create = () => {
               type="text"
               id="category"
               name="category"
-              value={formData.description}
-              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+              value={formData.category}  // Changed to formData.category
+              onChange={(e) => setFormData({ ...formData, category: e.target.value })}
             />
             <label htmlFor="price">Price</label>
             <input

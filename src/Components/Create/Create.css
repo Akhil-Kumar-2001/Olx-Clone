@@ -111,3 +111,24 @@
     width: 100%;
   }
 }
+
+/* Create.css */
+
+.input {
+  width: 100%; /* Make input fields take up full width of the container */
+  padding: 8px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.input::placeholder {
+  color: #888; /* Set placeholder color */
+  font-size: 16px; /* Match the font-size of the input */
+  text-align: left; /* Ensure alignment for placeholder text */
+}
+
+/* Additional styling for the price input specifically, if needed */
+#price {
+  /* Add any specific styling to the price input box here */
+}

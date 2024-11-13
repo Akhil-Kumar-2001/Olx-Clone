@@ -4,7 +4,7 @@ import Signup from './Pages/Signup'
 import Login from './Pages/Login'
 import { Toaster } from 'react-hot-toast'
 import Create from './Pages/Create'
-import  View  from './Components/View/View'
+import  View  from './Pages/ViewPost'
 import Post from './Store/PostContext'
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/sell' element={<Create />} />
           <Route path='/view' element={<View/>} />
-          
+       
         </Routes>
       </BrowserRouter>
       </Post>   
