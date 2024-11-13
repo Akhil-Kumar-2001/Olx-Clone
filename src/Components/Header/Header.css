@@ -1,0 +1,102 @@
+.headerParentDiv {
+  padding: 10px;
+  background-color: whitesmoke;
+  position: fixed;
+  width: 100vw;
+  z-index: 999;
+}
+
+.headerChildDiv {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.brandName img {
+  height: 40px;
+}
+
+.placeSearch, .productSearch, .language, .loginPage, .sellMenu {
+  display: flex;
+  align-items: center;
+  height: 48px;
+}
+
+.placeSearch {
+  width: 16em;
+  padding: 0 8px;
+  border: 2px solid #002f34;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.placeSearch input {
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.productSearch {
+  width: 35em;
+  border: 2px solid #002f34;
+  border-radius: 4px;
+  background-color: white;
+  justify-content: space-between;
+}
+
+.productSearch .input {
+  width: 100%;
+}
+
+.productSearch .input input {
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.productSearch .searchAction {
+  min-width: 48px;
+  display: flex;
+  cursor: pointer;
+  background-color: #002f34;
+  border-radius: 0 4px 4px 0;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+}
+
+.productSearch .searchAction svg {
+  color: white;
+}
+
+.language span, .loginPage span, .sellMenu span {
+  font-weight: bold;
+}
+
+.loginPage hr {
+  margin: 0;
+  background-color: black;
+  height: 2px;
+}
+
+.sellMenuContent {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #002f34;
+}
+
+.sellMenuContent svg {
+  margin-right: 5px;
+}
+
+@media only screen and (max-width: 700px) {
+  .placeSearch,
+  .productSearch,
+  .sellMenu {
+    display: none;
+  }
+}
