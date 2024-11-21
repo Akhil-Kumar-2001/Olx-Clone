@@ -81,7 +81,7 @@ const Create = () => {
   return (
     <>
       <Header />
-      <div className='card'>
+      <div className='cardA'>
         <div className="centerDiv">
           <form onSubmit={handleAddProduct}>
             <label htmlFor="fname">Name</label>

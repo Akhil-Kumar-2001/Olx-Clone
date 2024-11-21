@@ -1,5 +1,4 @@
-import { createContext, useState, ReactNode } from 'react';
-
+import { createContext, useState, ReactNode, useEffect } from 'react';
 
 type productType = {
   title?: string;
@@ -17,7 +16,6 @@ type ProductContextType = {
   setPostDetails: React.Dispatch<React.SetStateAction<productType | undefined>>;
 };
 
-// Initialize the context with `undefined` as default
 const PostContext = createContext<ProductContextType | undefined>(undefined);
 
 type PostProviderProps = {
@@ -25,7 +23,18 @@ type PostProviderProps = {
 };
 
 const PostProvider = ({ children }: PostProviderProps) => {
-  const [postDetails, setPostDetails] = useState<productType | undefined>(undefined);
+  const [postDetails, setPostDetails] = useState<productType | undefined>(() => {
+    // Try to get the post details from localStorage
+    const savedPostDetails = localStorage.getItem('postDetails');
+    return savedPostDetails ? JSON.parse(savedPostDetails) : undefined;
+  });
+
+  // Update localStorage whenever postDetails changes
+  useEffect(() => {
+    if (postDetails) {
+      localStorage.setItem('postDetails', JSON.stringify(postDetails));
+    }
+  }, [postDetails]);
 
   return (
     <PostContext.Provider value={{ postDetails, setPostDetails }}>
@@ -36,4 +45,3 @@ const PostProvider = ({ children }: PostProviderProps) => {
 
 export { PostContext };
 export default PostProvider;
-

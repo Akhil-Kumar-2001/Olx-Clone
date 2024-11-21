@@ -1,4 +1,4 @@
-.moreView {
+/* .moreView {
   margin: 16px 16px 24px;
   padding: 16px 16px 32px;
   background-color: #ebeeef;
@@ -84,4 +84,178 @@
 .recommendations .heading span {
   font-size: 24px;
   color: #002f34;
+} */
+
+.moreView {
+  margin: 16px 16px 24px;
+  padding: 16px 16px 32px;
+  background-color: #f7f8f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #eaedef;
+}
+
+.heading :first-child {
+  font-size: 24px;
+  color: #002f34;
+  font-weight: 600;
+}
+
+.heading :last-child {
+  font-size: 14px;
+  color: #002f34;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.heading :last-child:hover {
+  color: #00a49f;
+}
+
+.moreView .cards {
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 8px 4px;
+  scrollbar-width: thin;
+  scrollbar-color: #00a49f #f7f8f9;
+}
+
+.moreView .cards::-webkit-scrollbar {
+  height: 6px;
+}
+
+.moreView .cards::-webkit-scrollbar-track {
+  background: #f7f8f9;
+  border-radius: 10px;
+}
+
+.moreView .cards::-webkit-scrollbar-thumb {
+  background-color: #00a49f;
+  border-radius: 10px;
+}
+
+.card {
+  margin-right: 15px;
+  padding: 16px;
+  max-width: 222px;
+  width: 222px;
+  height: 320px; /* Increased height to accommodate content */
+  display: inline-block;
+  cursor: pointer;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  vertical-align: top;
+  position: relative; /* Added for absolute positioning of date */
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.card .favorite {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.card .favorite svg {
+  color: #c8c8c8;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.card .favorite svg:hover {
+  color: #ff4f4f;
+  transform: scale(1.1);
+}
+
+.card .image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 140px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #f7f8f9;
+}
+
+.card .image img {
+  height: 100px;
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .image img {
+  transform: scale(1.05);
+}
+
+.card .content {
+  padding: 4px 0;
+  height: 90px; /* Fixed height for content */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card .content .rate {
+  margin-top: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #002f34;
+}
+
+.card .content .kilometer {
+  font-size: 14px;
+  color: #666;
+  display: block;
+  margin: 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card .content .name {
+  font-size: 14px;
+  color: #002f34;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+
+.card .date {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  font-size: 12px;
+  color: #888;
+  background-color: white; /* Ensures date is visible */
+}
+
+.recommendations {
+  margin: 16px 16px 24px;
+}
+
+.recommendations .heading span {
+  font-size: 24px;
+  color: #002f34;
+  font-weight: 600;
 }

@@ -1,12 +1,25 @@
 import { useContext } from 'react';
 import './View.css';
 import { PostContext } from '../../Store/PostContext';
-import noimg from '../../assets/no-image.jpg' 
+import noimg from '../../assets/no-image.jpg';
+
+
+type productType = {
+  title?: string;
+  price?: number;
+  location: string;
+  category?: string;
+  date?: any;
+  description: string;
+  id: string;
+  image?: string;
+};
 
 function View() {
-  const { postDetails } = useContext(PostContext);
+  // const { postDetails } = useContext(PostContext);
+  const { postDetails } = useContext(PostContext) as { postDetails: productType };
 
-  // Handle cases where postDetails is undefined
+
   if (!postDetails) {
     return <p>Loading post details...</p>;
   }
@@ -15,7 +28,7 @@ function View() {
     <div className="viewParentDiv">
       <div className="imageShowDiv">
         <img
-          src={postDetails.image || {noimg}} // fallback image if none exists
+          src={postDetails.image || noimg}  // Fallback image
           alt={postDetails.title || "Product Image"}
         />
       </div>
@@ -29,7 +42,6 @@ function View() {
         <div className="contactDetails">
           <p>Seller details</p>
           <p>Location : {postDetails.location || "Location not provided"}</p>
-          {/* Add contact info here if available in postDetails */}
         </div>
       </div>
     </div>

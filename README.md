@@ -1,50 +1,24 @@
-# React + TypeScript + Vite
+OLX Clone
+An OLX-like platform for posting and browsing classified ads. This web application is built using React for the frontend, Firebase for authentication and database management, and Cloudinary for image storage.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+User Authentication:
 
-Currently, two official plugins are available:
+Sign up and log in with email and password (powered by Firebase Authentication).
+Post Ads:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Users can post ads by providing a title, description, price, and uploading images (stored in Cloudinary).
+Browse Ads:
 
-## Expanding the ESLint configuration
+View a list of all posted ads with features like search and filter.
+Ad Details Page:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+View detailed information about a specific ad.
+Responsive Design:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Optimized for both desktop and mobile screens.
+Tech Stack
+Frontend: React, React Router
+Backend: Firebase Realtime Database
+Image Storage: Cloudinary
+Styling: CSS Modules or Tailwind CSS
